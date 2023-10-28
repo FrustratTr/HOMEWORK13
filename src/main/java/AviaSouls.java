@@ -5,9 +5,8 @@ public class AviaSouls {
     private Ticket[] tickets = new Ticket[0];
 
     private Ticket[] addToArray(Ticket[] current, Ticket ticket) {
-        Ticket[] tmp = new Ticket[current.length + 1];
-        System.arraycopy(current, 0, tmp, 0, current.length);
-        tmp[tmp.length - 1] = ticket;
+        Ticket[] tmp = Arrays.copyOf(current, current.length + 1);
+        tmp[current.length] = ticket;
         return tmp;
     }
 
@@ -29,7 +28,6 @@ public class AviaSouls {
         Arrays.sort(result);
         return result;
     }
-
     public Ticket[] searchAndSortBy(String from, String to, Comparator<Ticket> comparator) {
         Ticket[] result = search(from, to);
         Arrays.sort(result, comparator);
